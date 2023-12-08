@@ -32,9 +32,12 @@ export function Login() {
 
     async function handleSignIn() {
         try {
-            await login(email, password);
-        } catch {
+            const emailLowerCase = email?.toLowerCase();
 
+            setShowError(false);
+            await login(emailLowerCase, password);
+        } catch {
+            setShowError(true);
         }
     }
 

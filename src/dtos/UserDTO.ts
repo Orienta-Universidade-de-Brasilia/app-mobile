@@ -4,7 +4,7 @@ export type UserDTO = {
     lastName?: string,
     fullname?: string,
     password?: string,
-    token?: string,
+    accesstoken?: string,
     email?: string,
     type?: string,
     refreshToken?: string

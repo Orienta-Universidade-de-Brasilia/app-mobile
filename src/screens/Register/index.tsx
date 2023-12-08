@@ -17,14 +17,11 @@ export function Register() {
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     const [ confirmPassword, setConfirmPassword ] = useState<string>('');
-    const [ typeUser, setTypeUser ] = useState<string>('')
     const [ listError, setListError ] = useState<string[]>([]);
-
-    let idUserCreated;
     
     const navigation = useNavigation();
     function handleGoBack() { navigation.goBack() }
-    function handleRegisterFormData() { navigation.navigate('registerFormData', {id: idUserCreated}) }
+    function handleRegisterFormData() { navigation.navigate('registerFormData') }
 
     async function handleValidation() {
         const regex = /unb\.br$/i;
@@ -44,13 +41,12 @@ export function Register() {
         if(newErrors.length == 0)
         {
             try {
-                const response = await api.post('/user', {email, password});
+                const emailLowerCase = email?.toLowerCase();
+
+                const response = await api.post('/user', {email: emailLowerCase, password});
 
                 if(response.status == 201) //DELETAR
                 {
-                    setTypeUser(response.data.role);
-                    idUserCreated = response.data._id;
-
                     //storageUserSave(response.data);
 
                     handleRegisterFormData();
@@ -67,6 +63,7 @@ export function Register() {
                 }
             }
             catch (error) {
+                console.log(error)
                 newErrors.push('O email inserido já está em uso.');
             }
         }

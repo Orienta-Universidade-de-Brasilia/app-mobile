@@ -58,7 +58,7 @@ export function RegisterFormData() {
     const [ wantPair, setWantPair ] = useState(false);
     const [areasInterest, setAreasInterest] = useState([]);
     
-    const onSelectAreasInterest = (areasInterest: any) => { setAreasInterest(areasInterest); console.log(areasInterest)}
+    const onSelectAreasInterest = (areasInterest: any) => { setAreasInterest(areasInterest);}
 
     const toggleSwitch = () => setWantPair(previousState => !previousState);
 

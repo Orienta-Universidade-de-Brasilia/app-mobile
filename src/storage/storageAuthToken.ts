@@ -7,7 +7,7 @@ export async function storageAuthTokenSave(token: string) {
 }
 
 export async function storageAuthTokenGet() {
-    const token = await AsyncStorage.getItem(AUTH_TOKEN_STORAGE);
+    const accesstoken = await AsyncStorage.getItem(AUTH_TOKEN_STORAGE);
 
-    return token;
+    return accesstoken;
 }

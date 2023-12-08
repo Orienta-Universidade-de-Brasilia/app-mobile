@@ -2,8 +2,14 @@ import { Toolbar, Container } from "./styles"
 import { HeaderToolBar } from "@components/HeaderToolBar";
 import { FlatList } from "react-native";
 import { Card } from "@components/Card";
+import { api } from "../../services/api";
+import { useAuth } from "../../hooks/useAuth";
+import { useEffect } from "react";
+import { UserRecommended } from "../../dtos/UserRecommended";
 
 export function List() {
+
+    const { user } = useAuth();
 
     const DATA = [
         {
@@ -43,6 +49,43 @@ export function List() {
           title: 'Third Item',
         }
     ]
+
+    async function getRecommendedUsers() {
+
+      const token = user.accesstoken;
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      };
+
+      console.log(headers)
+      try {
+        const { data } = await api.get('/user', { headers });
+        
+        const usersRecommended: UserRecommended[] = data.map((item: any) => ({
+          id: item.id,
+          firstName: item.firstName,
+          lastName: item.lastName,
+          fullname: item.fullName,
+          email: item.email,
+          cellPhone: item.cellPhone,
+          type: item.userType.description,
+          interestedArea: item.interestedArea,
+          recommendation: item.recommendation,
+          recommendationValue: item.recommendationValue,
+        }));
+
+        console.log(usersRecommended);
+
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
+    useEffect(() => {
+      getRecommendedUsers();
+    }, []);
 
     return (
         <Container>
