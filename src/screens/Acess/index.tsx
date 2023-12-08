@@ -3,9 +3,11 @@ import { Header } from "@components/Header";
 import { Button } from "@components/Button"
 import { useNavigation } from "@react-navigation/native";
 
+import { AuthNavigatorRoutesProps } from "../../routes/auth.routes";
+
 
 export function Acess() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
     function handleRegister() {
         navigation.navigate('register');

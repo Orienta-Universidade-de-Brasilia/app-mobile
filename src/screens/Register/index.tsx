@@ -1,4 +1,4 @@
-import { Container, ContentInput, ContentValidation, TextValidation } from "./styles";
+import { Container, ContentInput, ContentValidation, TextValidation, ContainerSelect } from "./styles";
 import { Header } from "@components/Header";
 import { Button } from "@components/Button"
 import { Input } from "@components/Input";
@@ -6,16 +6,19 @@ import { useNavigation } from "@react-navigation/native";
 import { BackButton } from "@components/BackButton";
 import { useState } from "react";
 import { api } from "../../services/api";
+import { storageUserSave } from "../../storage/storageUser";
 
-
+import { useAuth } from "../../hooks/useAuth";
 
 export function Register() {
+
+    const { setUser } = useAuth();
 
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     const [ confirmPassword, setConfirmPassword ] = useState<string>('');
     const [ typeUser, setTypeUser ] = useState<string>('')
-    const [listError, setListError] = useState<string[]>([]);
+    const [ listError, setListError ] = useState<string[]>([]);
 
     let idUserCreated;
     
@@ -41,14 +44,23 @@ export function Register() {
         if(newErrors.length == 0)
         {
             try {
-                const response = await api.post('/user', { email, password});
-    
-                if(response.status == 201)
+                const response = await api.post('/user', {email, password});
+
+                if(response.status == 201) //DELETAR
                 {
                     setTypeUser(response.data.role);
                     idUserCreated = response.data._id;
 
+                    //storageUserSave(response.data);
+
                     handleRegisterFormData();
+
+                    setUser({
+                            id: response.data._id,
+                            email: response.data.email,
+                            password: password,
+                            type: response.data.userType.description
+                        })
     
                 } else{
                     newErrors.push('O email inserido já está em uso.');
@@ -56,7 +68,7 @@ export function Register() {
             }
             catch (error) {
                 newErrors.push('O email inserido já está em uso.');
-                }
+            }
         }
 
         setListError(newErrors);
@@ -90,6 +102,7 @@ export function Register() {
                     value={confirmPassword}
                     onChangeText={(value: string) => setConfirmPassword(value)}
                 />
+
             </ContentInput>
 
             <ContentValidation>

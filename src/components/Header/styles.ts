@@ -11,7 +11,7 @@ export const ButtonGoBack = styled.TouchableOpacity`
   position: absolute;
   z-index: 100;
   padding-left: 15;
-  margin-top: 40;
+  margin-top: 40px;
   align-self: flex-start;
 `;
 

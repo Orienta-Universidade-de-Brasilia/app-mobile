@@ -1,16 +1,26 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Acess } from "@screens/Acess";
 import { Login } from "@screens/Login";
 import { Register } from "@screens/Register";
 import { RegisterFormData } from "@screens/RegisterFormData";
 
-const { Navigator, Screen } = createNativeStackNavigator();
+
+type AuthRoutes = {
+    access: undefined,
+    login: undefined,
+    register: undefined,
+    registerFormData: undefined
+}
+
+export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
+
+const { Navigator, Screen } = createNativeStackNavigator<AuthRoutes>();
 
 export function AuthRoutes() {
     return (
-        <Navigator initialRouteName="acess" screenOptions={{ headerShown: false}}>
+        <Navigator initialRouteName="access" screenOptions={{ headerShown: false}}>
             <Screen 
-                name="acess"
+                name="access"
                 component={Acess}
             />
 

@@ -17,19 +17,27 @@ export const ContentInput = styled.View`
 
 export const ContentSwitch = styled.View`
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
 
     flex-direction: row;
     align-items: center; 
-
-    padding-bottom: 40px;
 `
 
 export const Text = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 
     color: ${ props  => props.theme.COLORS.GREY};
 
     margin-right: 20px;
+`
+
+export const ContainerSelect = styled.View`
+  width: 100%;
+
+  display: flex;
+  
+  background-color: ${ props  => props.theme.COLORS.ICE};
+
+  padding-bottom: 20px;
 `

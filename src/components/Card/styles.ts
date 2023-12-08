@@ -12,7 +12,7 @@ export const Title = styled.Text`
 export const TextInterest =  styled.Text`
   color: #959595;
   font-size: 8px;
-  margin-top: 8;
+  margin-top: 8px;
 `
 
 export const Content = styled.View`
@@ -27,7 +27,7 @@ export const Content = styled.View`
 export const ContentText = styled.View`
   flex-direction: column;
   justify-content: flex-start;
-  margin-left: 10;
+  margin-left: 10px;
 `
 
 export const Container = styled.View`
@@ -58,5 +58,5 @@ export const Container = styled.View`
   shadow-offset: 0px 2px;
   shadow-opacity: 0.3;
   shadow-radius: 2px;
-  margin-left: 10;
+  margin-left: 10px;
 `;

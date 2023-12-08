@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
 export const Container = styled.View`
-  margin-top: -15;
+  margin-top: -15px;
 `;

@@ -14,3 +14,23 @@ export const ContentInput = styled.View`
 
   margin: 80px 0;
 `
+
+export const ContentValidation = styled.View`
+    align-items: center;
+`;
+
+export const TextValidation = styled.TextInput`
+  flex: 1;
+
+  min-height: 15px;
+  max-height: 15px;
+
+  width: 100%;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  margin-bottom: 20px;
+
+  color: ${ props  => props.theme.COLORS.RED};
+`

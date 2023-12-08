@@ -25,8 +25,6 @@ export const Container = styled(TouchableOpacity) <Props>`
 
   justify-content: center;
   align-items: center;
-
-  border: 10px solid black;
 `;
 
 export const Title = styled(Text) <Props>`
