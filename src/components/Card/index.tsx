@@ -12,10 +12,12 @@ import { Heart } from "phosphor-react-native";
 type Props =  {
     name: string;
     interestedArea: string[];
-    ratingValue?: number
+    ratingValue?: number;
+    showRecommend: boolean;
+    email: string;
 }
 
-export function Card({ name, interestedArea, ratingValue} : Props) {
+export function Card({ name, interestedArea, ratingValue, showRecommend, email} : Props) {
 
     const [isIconActive, setIsIconActive] = useState(false);
 
@@ -43,27 +45,35 @@ export function Card({ name, interestedArea, ratingValue} : Props) {
                         <Text style={{ fontWeight: 'bold' }}>Áreas de Interesse:</Text> {interestedArea.map((area, index) => (
                                     index < interestedArea.length - 1 ? `${area}; ` : `${area}.`))}
                     </TextInterest>
+
+                    <TextInterest>
+                        <Text style={{ fontWeight: 'bold' }}>Email:</Text> {email}
+                    </TextInterest>
                 </InterestContainer>
 
             </ContentText>
 
-            <IconRating>
-                <AirbnbRating 
-                    count={3}
-                    reviews={["Leve", "Moderada", "Forte"]}
-                    defaultRating={ratingValue}
-                    size={12}
-                    reviewSize={8}
-                    starContainerStyle={{ marginTop: -10, marginBottom: -2 }}
-                />
-            </IconRating>
+            { showRecommend ?
+                <>
+                    <IconRating>
+                        <AirbnbRating 
+                            count={3}
+                            reviews={["Baixa", "Moderada", "Alta"]}
+                            defaultRating={ratingValue}
+                            size={12}
+                            reviewSize={8}
+                            starContainerStyle={{ marginTop: -10, marginBottom: -2 }}
+                        />
+                    </IconRating>
 
-            <IconHeart onPress={handleActiveIcon}>
-                <Heart size={20} 
-                    weight={isIconActive ? "fill" : "duotone"} 
-                    color={isIconActive ? "red": ""}
-                />
-            </IconHeart>
+                    <IconHeart onPress={handleActiveIcon}>
+                        <Heart size={20} 
+                            weight={isIconActive ? "fill" : "duotone"} 
+                            color={isIconActive ? "red": ""}
+                        />
+                    </IconHeart> 
+                </> : ''
+            }
         </Container>
     )
 }

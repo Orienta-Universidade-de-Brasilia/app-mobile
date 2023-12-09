@@ -46,7 +46,9 @@ export const Name = styled.Text`
 export const InterestContainer = styled.View`
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 90%;
+    max-width: 85%;
+
+    //border: 1px solid red;
 `;
 
 export const IconHeart = styled.TouchableOpacity`

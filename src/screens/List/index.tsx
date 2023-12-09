@@ -24,7 +24,7 @@ export function List() {
           default:
             return 0;
         }
-      };
+    };
       
 
     async function getRecommendedUsers() {
@@ -55,8 +55,6 @@ export function List() {
                 }
             )))
 
-            console.log(usersRecommended);
-
         } catch (error) {
             console.log(error)
         }
@@ -77,6 +75,8 @@ export function List() {
                         name={item.fullname}
                         interestedArea={item.interestedArea}
                         ratingValue={item.recommendationRating}
+                        showRecommend={true}
+                        email={item.email}
                     />
                 )}
                 keyExtractor={item => String(item.id)}

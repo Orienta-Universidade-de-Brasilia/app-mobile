@@ -23,6 +23,8 @@ export function Input({security = false, isCellphone = false, ...rest}: Props) {
         <InputContainer>
                 {isCellphone ? (
                     <ContainerCellphone
+                        returnKeyType="done"
+                        keyboardType="numeric"
                         type={'cel-phone'}
                         {...rest}
                         options={{

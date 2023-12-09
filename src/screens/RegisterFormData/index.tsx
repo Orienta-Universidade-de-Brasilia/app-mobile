@@ -2,7 +2,7 @@ import { Container, ContentInput, ContentSwitch, ContainerSelect } from "./style
 import { Header } from "@components/Header";
 import { Button } from "@components/Button"
 import { Input } from "@components/Input";
-import { Switch } from "react-native";
+import { ScrollView, Switch } from "react-native";
 import { Text } from "./styles";
 import { BackButton } from "@components/BackButton";
 import { useNavigation } from "@react-navigation/native";
@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
 import { useAuth } from "../../hooks/useAuth"
+import { View } from "react-native";
 
 const items = [
     { id: 'Desenvolvimento de Software', name: 'Desenvolvimento de Software' },
@@ -91,42 +92,43 @@ export function RegisterFormData() {
 
     
     return (
-        <Container>
-            <Header />
+        <ScrollView>
+            <Container>
+                <Header />
 
-            <BackButton onPress={handleGoBack} />
+                <BackButton onPress={handleGoBack} />
 
-            <ContentInput>
-                <Input 
-                    placeholder="Nome"
-                    value={name}
-                    onChangeText={(value: string) => setName(value)}
-                />
+                <ContentInput>
+                    <Input 
+                        placeholder="Nome"
+                        value={name}
+                        onChangeText={(value: string) => setName(value)}
+                    />
 
-                <Input 
-                    placeholder="Sobrenome"
-                    value={lastName}
-                    onChangeText={(value: string) => setLastName(value)}
-                />
+                    <Input 
+                        placeholder="Sobrenome"
+                        value={lastName}
+                        onChangeText={(value: string) => setLastName(value)}
+                    />
 
-                <Input 
-                    placeholder="Telefone"
-                    value={cellPhone}
-                    isCellphone={true}
-                    onChangeText={(value: string) => setCellPhone(value)}
-                />
-
-            <ContentSwitch>
-                <Text>
-                    Trabalho em dupla?
-                </Text>
-                <Switch
-                    trackColor={{false: '#767577', true: '#006494'}}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={wantPair}
-                />
-            </ContentSwitch>
+                    <Input 
+                        placeholder="Telefone"
+                        value={cellPhone}
+                        isCellphone={true}
+                        onChangeText={(value: string) => setCellPhone(value)}
+                    />
+                    
+                <ContentSwitch>
+                    <Text>
+                        Trabalho em dupla?
+                    </Text>
+                    <Switch
+                        trackColor={{false: '#767577', true: '#006494'}}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={wantPair}
+                    />
+                </ContentSwitch>
 
                 <ContainerSelect>
                     <SectionedMultiSelect
@@ -148,22 +150,23 @@ export function RegisterFormData() {
                                 //fontSize: '16px',
                                 fontWeight: 'bold',
                                 color: '#797979',
-                              },
+                                },
                             button: {
                                 backgroundColor: '#006494'
                             }
                         }}
                     />
                 </ContainerSelect>
-            </ContentInput>
+                </ContentInput>
 
+                <View style={{ marginBottom: 60 }}>
+                    <Button 
+                        onPress={handleRegister}
+                        title="Enviar"
+                    />
+                </View>
 
-            <Button 
-                onPress={handleRegister}
-                title="Enviar"
-            />
-
-            
-        </Container>
+            </Container>
+        </ScrollView>
     );
 }
