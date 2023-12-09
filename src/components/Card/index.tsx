@@ -3,8 +3,8 @@ import { Image, Text } from "react-native";
 
 import profileImg from '@assets/profile.png';
 
-import { Container, ContentText, Name, TextInterest,
-    IconHeart, IconRating, InterestContainer } from "./styles";
+import { Container, ContentText, Name, TextInterest, ContentTypeUser,
+    IconHeart, IconRating, InterestContainer, ContentUser, TextTypeUser } from "./styles";
     
 import {  AirbnbRating } from 'react-native-ratings';
 import { Heart } from "phosphor-react-native";
@@ -15,9 +15,10 @@ type Props =  {
     ratingValue?: number;
     showRecommend: boolean;
     email: string;
+    type: string;
 }
 
-export function Card({ name, interestedArea, ratingValue, showRecommend, email} : Props) {
+export function Card({ name, interestedArea, ratingValue, showRecommend, email, type} : Props) {
 
     const [isIconActive, setIsIconActive] = useState(false);
 
@@ -28,10 +29,18 @@ export function Card({ name, interestedArea, ratingValue, showRecommend, email} 
     return (
 
         <Container>
-            <Image 
-                source={profileImg} 
-                resizeMode="cover"
-            />
+
+            <ContentUser>
+
+                <Image source={profileImg} resizeMode="cover"/>
+
+                <ContentTypeUser>
+                    <TextTypeUser>{type}</TextTypeUser>
+                </ContentTypeUser>
+                
+            </ContentUser>
+
+            
             <ContentText>
 
                 <Name>

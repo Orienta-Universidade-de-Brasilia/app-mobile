@@ -149,6 +149,7 @@ export function Search() {
                             ratingValue={item.recommendationRating}
                             showRecommend={false}
                             email={item.email}
+                            type={item.type == 'STUDENT' ? 'ALUNO' : 'PROFESSOR'}
                         />
                     )}
                     keyExtractor={item => String(item.id)}

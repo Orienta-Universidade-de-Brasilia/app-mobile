@@ -46,7 +46,7 @@ export const Name = styled.Text`
 export const InterestContainer = styled.View`
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 85%;
+    max-width: 82%;
 
     //border: 1px solid red;
 `;
@@ -58,11 +58,37 @@ export const IconHeart = styled.TouchableOpacity`
     top: 50%;
 
     padding: 8px;
-`
+`;
 
 export const IconRating = styled.TouchableOpacity`
     position: absolute;
     z-index: 100;
     right: 5px;
     top: -5px;
-`
+`;
+
+export const ContentUser = styled.View`
+    align-items: center;
+`;
+
+export const ContentTypeUser = styled.View`
+
+    background-color: #247BA0;
+    border-radius: 5px;
+
+    margin-top: 8px;
+
+    max-width: 58px;
+    min-width: 58px;
+
+    align-items: center;
+`;
+
+export const TextTypeUser = styled.Text`
+    font-size: 8px;
+    font-weight: 600;
+
+    padding: 1px;
+
+    color: white;
+`;

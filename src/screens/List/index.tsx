@@ -77,6 +77,7 @@ export function List() {
                         ratingValue={item.recommendationRating}
                         showRecommend={true}
                         email={item.email}
+                        type={item.type == 'STUDENT' ? 'ALUNO' : 'PROFESSOR'}
                     />
                 )}
                 keyExtractor={item => String(item.id)}
