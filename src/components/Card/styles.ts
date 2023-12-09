@@ -1,27 +1,14 @@
 import styled from "styled-components/native";
 
 export const Profile = styled.Image`
-    
+    /* width: 50px;
+    height: 50px;
+    margin-right: 10px; */
 `
-export const Title = styled.Text`
+export const TextInterest = styled.Text`
   color: #959595;
-  font-size: 16px;
-  font-weight: bold;
-`;
-
-export const TextInterest =  styled.Text`
-  color: #959595;
-  font-size: 8px;
+  font-size: 10px;
   margin-top: 8px;
-`
-
-export const Content = styled.View`
-  //border: 1px solid red;
-
-  flex-direction: row;
-  width: 94%;
-  justify-content: center;
-  align-items: center;
 `
 
 export const ContentText = styled.View`
@@ -31,32 +18,49 @@ export const ContentText = styled.View`
 `
 
 export const Container = styled.View`
-  flex: 1;
+    flex-direction: row;
+    align-items: center;
+    
+    background-color: white;
+    border-radius: 6px;
+    margin: 8px 10px;
+    padding: 10px;
 
-  background-color: #FFFF;
+    border-bottom-width: 2px;
+    border-bottom-color: #1B98E0;
+    border-bottom-style: solid;
 
-  border-radius: 8px;
-  //border-color: ${(props) => props.type === 'PRIMARY'  ? props.theme.COLORS.BLUE : props.theme.COLORS.BLUE_BLACK };
-  //border-style: solid;
-  //border-width: 2px;
+    shadow-color: #000;
+    shadow-offset: 0px 2px;
+    shadow-opacity: 0.3;
+    shadow-radius: 2px;
 
-  width: 94%;
-  min-height: 85px;
-  max-height: 85px;
-
-  justify-content: center;
-  align-items: center;
-
-  //border: 10px solid black;
-  border-bottom-width: 2px;
-  border-bottom-color: #1B98E0;
-  border-bottom-style: solid;
-
-  margin-top: 15px;
-
-  shadow-color: #000;
-  shadow-offset: 0px 2px;
-  shadow-opacity: 0.3;
-  shadow-radius: 2px;
-  margin-left: 10px;
+    min-height: 90px;
 `;
+
+export const Name = styled.Text`
+ font-size: 18px;
+ font-weight: bold;
+`;
+
+export const InterestContainer = styled.View`
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 90%;
+`;
+
+export const IconHeart = styled.TouchableOpacity`
+    position: absolute;
+    z-index: 100;
+    right: 15px;
+    top: 50%;
+
+    padding: 8px;
+`
+
+export const IconRating = styled.TouchableOpacity`
+    position: absolute;
+    z-index: 100;
+    right: 5px;
+    top: -5px;
+`

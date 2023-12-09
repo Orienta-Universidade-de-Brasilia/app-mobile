@@ -8,5 +8,6 @@ export type UserRecommended = {
     type?: string,
     interestedArea?: string[],
     recommendation?: string,
-    recommendationValue?: number
+    recommendationValue?: number,
+    recommendationRating?: number
 }
