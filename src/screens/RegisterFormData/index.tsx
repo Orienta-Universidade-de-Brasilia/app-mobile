@@ -1,4 +1,3 @@
-import { Container, ContentInput, ContentSwitch, ContainerSelect } from "./styles";
 import { Header } from "@components/Header";
 import { Button } from "@components/Button"
 import { Input } from "@components/Input";
@@ -7,7 +6,6 @@ import { Text } from "./styles";
 import { BackButton } from "@components/BackButton";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { useRoute } from '@react-navigation/native';
 import { api } from "../../services/api";
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -15,6 +13,9 @@ import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
 import { useAuth } from "../../hooks/useAuth"
 import { View } from "react-native";
+
+import { Container, ContentInput, ContentSwitch, ContainerSelect,
+         ContentValidation, TextValidation } from "./styles";
 
 const items = [
     { id: 'Desenvolvimento de Software', name: 'Desenvolvimento de Software' },
@@ -41,28 +42,49 @@ const items = [
 
 
 export function RegisterFormData() {
-    const { user, setUser, login } = useAuth()
+    const { user, login } = useAuth()
 
     const navigation = useNavigation();
-    const route = useRoute();
 
     function handleGoBack() { navigation.goBack() }
 
     function formatCellphone(telefone: any) { return telefone.replace(/\D/g, '') }
-    
 
     const [ name, setName ] = useState<string>('');
     const [ lastName, setLastName ] = useState<string>('');
     const [ cellPhone, setCellPhone ] = useState<string>('');
-    const [ interestArea, setInterestArea ] = useState<string>('');
-    const [ listInterestArea, setListInterestArea ] = useState<string[]>([]);
     const [ wantPair, setWantPair ] = useState(false);
-    const [areasInterest, setAreasInterest] = useState([]);
+    const [ areasInterest, setAreasInterest ] = useState([]);
+
+    const [ listError, setListError ] = useState<string[]>([]);
+
     
     const onSelectAreasInterest = (areasInterest: any) => { setAreasInterest(areasInterest);}
 
     const toggleSwitch = () => setWantPair(previousState => !previousState);
 
+    function validateRegister() {
+
+        let newErrors = [];
+
+        if(name == '')
+            newErrors.push('Preencha o campo Nome.');
+            
+        if(lastName == '')
+            newErrors.push('Preencha o campo Sobrenome.');
+
+        if(cellPhone == '')
+            newErrors.push('Preencha o campo Telefone.');
+
+        if(areasInterest.length < 3)
+            newErrors.push('Por favor, escolha pelo menos três áreas de interesse.');
+
+        if(newErrors.length == 0) {
+            handleRegister();
+        }
+
+        setListError(newErrors);
+    }
 
     async function handleRegister() {
 
@@ -81,14 +103,6 @@ export function RegisterFormData() {
             console.log('Error')
         }
     }
-
-    const handleInterestAreaChange = (value: string) => {
-        setInterestArea(value);
-    
-        const wordsArray = value.split(',');
-
-        setListInterestArea(wordsArray);
-    };
 
     
     return (
@@ -117,18 +131,30 @@ export function RegisterFormData() {
                         isCellphone={true}
                         onChangeText={(value: string) => setCellPhone(value)}
                     />
-                    
-                <ContentSwitch>
-                    <Text>
-                        Trabalho em dupla?
-                    </Text>
-                    <Switch
-                        trackColor={{false: '#767577', true: '#006494'}}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={toggleSwitch}
-                        value={wantPair}
-                    />
-                </ContentSwitch>
+
+                    <ContentSwitch>
+                        <Text>
+                            Trabalho em dupla?
+                        </Text>
+                        <Switch
+                            trackColor={{false: '#767577', true: '#006494'}}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={toggleSwitch}
+                            value={wantPair}
+                        />
+                    </ContentSwitch>
+
+                    {listError.length > 0 ? 
+                        <ContentValidation>
+                            {listError.map((error, index) => (
+                                <TextValidation key={index}>
+                                    {error}
+                                </TextValidation>
+                            ))}
+                        </ContentValidation>
+                        : ''
+                    }
+
 
                 <ContainerSelect>
                     <SectionedMultiSelect
@@ -161,7 +187,7 @@ export function RegisterFormData() {
 
                 <View style={{ marginBottom: 60 }}>
                     <Button 
-                        onPress={handleRegister}
+                        onPress={validateRegister}
                         title="Enviar"
                     />
                 </View>

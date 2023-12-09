@@ -45,10 +45,8 @@ export function Register() {
 
                 const response = await api.post('/user', {email: emailLowerCase, password});
 
-                if(response.status == 201) //DELETAR
+                if(response.status == 201)
                 {
-                    //storageUserSave(response.data);
-
                     handleRegisterFormData();
 
                     setUser({

@@ -41,3 +41,24 @@ export const ContainerSelect = styled.View`
 
   padding-bottom: 20px;
 `
+
+export const ContentValidation = styled.View`
+    align-items: center;
+`;
+
+export const TextValidation = styled.TextInput`
+  flex: 1;
+
+  min-height: 15px;
+  max-height: 15px;
+
+  width: 100%;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+  color: ${ props  => props.theme.COLORS.RED};
+`
