@@ -3,13 +3,15 @@ import { Acess } from "@screens/Acess";
 import { Login } from "@screens/Login";
 import { Register } from "@screens/Register";
 import { RegisterFormData } from "@screens/RegisterFormData";
+import { Terms } from "@screens/Terms";
 
 
 type AuthRoutes = {
     access: undefined,
     login: undefined,
     register: undefined,
-    registerFormData: undefined
+    registerFormData: undefined,
+    terms: undefined
 }
 
 export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>;
@@ -37,6 +39,10 @@ export function AuthRoutes() {
             <Screen 
                 name="registerFormData"
                 component={RegisterFormData}
+            />
+            <Screen
+                name="terms"
+                component={Terms}
             />
         </Navigator>
     )

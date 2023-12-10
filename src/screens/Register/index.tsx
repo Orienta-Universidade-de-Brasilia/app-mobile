@@ -1,4 +1,4 @@
-import { Container, ContentInput, ContentValidation, TextValidation, ContainerSelect } from "./styles";
+import { Container, ContentInput, ContentValidation, TextValidation } from "./styles";
 import { Header } from "@components/Header";
 import { Button } from "@components/Button"
 import { Input } from "@components/Input";
@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import { BackButton } from "@components/BackButton";
 import { useState } from "react";
 import { api } from "../../services/api";
-import { storageUserSave } from "../../storage/storageUser";
 
 import { useAuth } from "../../hooks/useAuth";
 

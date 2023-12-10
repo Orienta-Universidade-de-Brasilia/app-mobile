@@ -15,16 +15,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.denysrogeres.orientaunb"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#E8F1F2"
-      }
+        "backgroundColor": "#247BA0"
+      },
+      "package": "com.denysrogeres.orientaunb"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3a33b373-9a65-48a5-9084-a24c6a4784d2"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/3a33b373-9a65-48a5-9084-a24c6a4784d2"
     }
   }
 }

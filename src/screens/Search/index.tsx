@@ -33,7 +33,30 @@ const items = [
     { id: 'Automacao de Processos', name: 'Automação de Processos' },
     { id: 'Arquitetura de Computadores', name: 'Arquitetura de Computadores' },
     { id: 'Sistemas Operacionais', name: 'Sistemas Operacionais' },
-    { id: 'Bioinformatica', name: 'Bioinformática (aplicações de tecnologia na área da biologia)' }
+    { id: 'Bioinformatica', name: 'Bioinformática (aplicações de tecnologia na área da biologia)' },
+    { id: 'Design de Interface de Usuário (UI/UX)', name: 'Design de Interface de Usuário (UI/UX)' },
+    { id: 'DevOps', name: 'DevOps' },
+    { id: 'Engenharia de Dados', name: 'Engenharia de Dados' },
+    { id: 'Desenvolvimento Mobile', name: 'Desenvolvimento Mobile' },
+    { id: 'Blockchain', name: 'Blockchain' },
+    { id: 'Gestão de Projetos de TI', name: 'Gestão de Projetos de TI' },
+    { id: 'Automação de Processos', name: 'Automação de Processos' },
+    { id: 'Marchine Learning', name: 'Marchine Learning' },
+    { id: 'Big Data', name: 'Big Data' },
+    { id: 'Arquitetura de Software', name: 'Arquitetura de Software' },
+    { id: 'Metodologias Ágeis', name: 'Metodologias Ágeis' },
+    { id: 'Paradigmas de Software', name: 'Paradigmas de Software' },
+    { id: 'Robótica', name: 'Robótica' },
+    { id: 'Business Intelligence (BI)', name: 'Business Intelligence (BI)' },
+    { id: 'Testes de Software', name: 'Testes de Software' },
+    { id: 'Programação Funcional', name: 'Programação Funcional' },
+    { id: 'Computação Quântica', name: 'Computação Quântica' },
+    { id: 'Desenvolvimento de Jogos', name: 'Desenvolvimento de Jogos' },
+    { id: 'Sistemas Distribuídos', name: 'Sistemas Distribuídos' },
+    { id: 'Chatbots', name: 'Chatbots' },
+    { id: 'Design de Algoritmos', name: 'Design de Algoritmos' },
+    { id: 'Computação Sem Servidor (Serverless)', name: 'Computação Sem Servidor (Serverless)' },
+    { id: 'Análise de Desempenho de Aplicações', name: 'Análise de Desempenho de Aplicações' }
 ];
 
 export function Search() {
